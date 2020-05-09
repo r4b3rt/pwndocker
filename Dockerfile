@@ -1,4 +1,4 @@
-FROM phusion/baseimage:master-amd64
+FROM phusion/baseimage:last
 MAINTAINER r4b3rt<r4b3rt#163.com>
 
 RUN dpkg --add-architecture i386 && \
@@ -41,6 +41,7 @@ RUN dpkg --add-architecture i386 && \
     file \
     zsh \
     qemu \
+    python3-distutils \
     bison --fix-missing  \
     gcc-multilib \
     binwalk \
@@ -68,11 +69,6 @@ RUN apt-add-repository ppa:brightbox/ruby-ng && \
 RUN ulimit -c 0
 RUN gem install one_gadget
 RUN gem install seccomp-tools
-
-RUN wget https://bootstrap.pypa.io/get-pip.py && \
-    python3 get-pip.py && \
-    python get-pip.py && \
-    rm get-pip.py
 
 RUN python3 -m pip install -U pip && \
     python3 -m pip install --no-cache-dir \
