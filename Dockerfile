@@ -48,7 +48,6 @@ RUN dpkg --add-architecture i386 && \
     libseccomp2 \
     seccomp
 
-
 RUN apt-get -f install -y \
     gcc-5-arm-linux-gnueabi \
     gcc-5-aarch64-linux-gnu \
@@ -77,16 +76,12 @@ RUN wget https://bootstrap.pypa.io/get-pip.py && \
 
 RUN python3 -m pip install -U pip && \
     python3 -m pip install --no-cache-dir \
-    -i https://pypi.doubanio.com/simple/  \
-    --trusted-host pypi.doubanio.com \
     ropper \
     unicorn \
     capstone
 
 RUN pip install --upgrade setuptools && \
     pip install --no-cache-dir \
-    -i https://pypi.doubanio.com/simple/  \
-    --trusted-host pypi.doubanio.com \
     ropgadget \
     pwntools \
     zio \
