@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM phusion/baseimage:master-amd64
 MAINTAINER r4b3rt<r4b3rt#163.com>
 
 RUN dpkg --add-architecture i386 && \
@@ -146,4 +146,4 @@ COPY gdbinit /root/.gdbinit
 
 RUN chmod a+x /ctf/linux_server /ctf/linux_server64
 
-ENTRYPOINT ["/bin/zsh"]
+CMD ["/sbin/my_init"]
