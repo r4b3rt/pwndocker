@@ -1,5 +1,7 @@
 FROM phusion/baseimage:latest
-MAINTAINER Tac1t0rnX <Tac1t0rnX@163.com>
+MAINTAINER r4b3rt<r4b3rt#163.com>
+
+COPY sources.list /etc/apt/sources.list
 
 RUN dpkg --add-architecture i386 && \
     apt-get -y update && \
@@ -12,6 +14,7 @@ RUN dpkg --add-architecture i386 && \
     g++-multilib \
     cmake \
     gcc \
+    tzdata \
     ipython \
     vim \
     net-tools \
@@ -45,7 +48,7 @@ RUN dpkg --add-architecture i386 && \
     binwalk \
     libseccomp-dev \
     libseccomp2 \
-    seccomp 
+    seccomp
 
 
 RUN apt-get -f install -y \
@@ -66,8 +69,8 @@ RUN apt-add-repository ppa:brightbox/ruby-ng && \
     apt install -y ruby2.6-dev
 
 RUN ulimit -c 0
-RUN gem install one_gadget 
-RUN gem install seccomp-tools 
+RUN gem install one_gadget
+RUN gem install seccomp-tools
 
 RUN wget https://bootstrap.pypa.io/get-pip.py && \
     python3 get-pip.py && \
@@ -95,10 +98,9 @@ RUN pip install --upgrade setuptools && \
     pip install --upgrade pwntools
 
 
-
 # Oh-my-zsh
 RUN chsh -s /bin/zsh
-RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 RUN git clone https://github.com/scwuaptx/Pwngdb.git /root/Pwngdb && \
     cd /root/Pwngdb && cat /root/Pwngdb/.gdbinit  >> /root/.gdbinit && \
@@ -114,7 +116,7 @@ RUN git clone https://github.com/pwndbg/pwndbg && \
     cd pwndbg &&  ./setup.sh
 
 # Vim-config
-RUN git clone https://github.com/Tacxingxing/vimrc && \
+RUN git clone https://github.com/r4b3rt/vimrc && \
     cd vimrc && chmod u+x install.sh && ./install.sh && cd ..
 
 WORKDIR /ctf/work/
