@@ -1,8 +1,6 @@
 FROM phusion/baseimage:latest
 MAINTAINER r4b3rt<r4b3rt#163.com>
 
-COPY sources.list /etc/apt/sources.list
-
 RUN dpkg --add-architecture i386 && \
     apt-get -y update && \
     apt install -y \
@@ -106,7 +104,7 @@ RUN git clone https://github.com/scwuaptx/Pwngdb.git /root/Pwngdb && \
     cd /root/Pwngdb && cat /root/Pwngdb/.gdbinit  >> /root/.gdbinit && \
     sed -i "s?source ~/peda/peda.py?# source ~/peda/peda.py?g" /root/.gdbinit
 
-RUN git clone https://github.com/TacXingXing/peda.git ~/peda && \
+RUN git clone https://github.com/r4b3rt/peda.git ~/peda && \
     cp ~/peda/.inputrc ~/
 
 RUN git clone https://github.com/niklasb/libc-database.git libc-database && \
@@ -145,6 +143,7 @@ COPY --from=skysider/glibc_builder32:2.30 /glibc/2.30/32 /glibc/2.30/32
 COPY --from=skysider/glibc_builder64:2.31 /glibc/2.31/64 /glibc/2.31/64
 COPY --from=skysider/glibc_builder32:2.31 /glibc/2.31/32 /glibc/2.31/32
 
+COPY sources.list /etc/apt/sources.list
 COPY linux_server linux_server64  /ctf/
 COPY zshrc /root/.zshrc
 COPY tmux.conf /root/.tmux.conf
