@@ -9,7 +9,7 @@ A docker environment for pwn in ctf based on **phusion/baseimage**, which is a m
 git clone https://github.com/r4b3rt/Pwndocker
 cd Pwndocker
 #change Dockerfile sourcelists position when build local,build on docker hub
-easy.
+easy will for your.
 docker build -t pwndocker .
 docker run -it -v $(pwd)/${ctf_name}:/ctf/work -p 23946:23946 --privileged --cap-add=SYS_PRTACE pwndocker
 ```
