@@ -22,6 +22,7 @@ RUN dpkg --add-architecture i386 && \
     libssl-dev \
     python-dev \
     python3-dev \
+    python3-pip
     build-essential \
     tmux \
     glibc-source \
@@ -71,21 +72,18 @@ RUN ulimit -c 0
 RUN gem install one_gadget
 RUN gem install seccomp-tools
 
-RUN python -m pip install pip==19.0.3 && \
-    python3 -m pip install pip==19.0.3 && \
-    python3 -m pip install --no-cache-dir \
-    ropper \
-    unicorn \
-    capstone
-
-RUN pip install --upgrade setuptools && \
-    pip install --no-cache-dir \
-    ropgadget \
-    pwntools==3.13.0 \
+RUN python3 -m pip install --no-cache-dir \
+    ropuadget \
+    pwntools \
     zio \
     smmap2 \
     z3-solver \
-    apscheduler
+    apscheduler \
+    opper \
+    unicorn \
+    keystone-engine \
+    capstone \
+    angr
 
 
 # Oh-my-zsh
@@ -143,4 +141,4 @@ COPY gdbinit /root/.gdbinit
 
 RUN chmod a+x /ctf/linux_server /ctf/linux_server64
 
-CMD ["/sbin/my_init"]
+CMD ["/bin/zsh"]
