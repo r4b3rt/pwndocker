@@ -82,7 +82,6 @@ RUN python3 -m pip install --no-cache-dir \
     capstone \
     angr
 
-
 # Oh-my-zsh
 RUN chsh -s /bin/zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

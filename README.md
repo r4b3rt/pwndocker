@@ -11,7 +11,19 @@ cd Pwndocker
 #change Dockerfile sourcelists position when build local,build on docker hub
 easy will for your.
 docker build -t pwndocker .
-docker run -it -v $(pwd)/${ctf_name}:/ctf/work -p 23946:23946 --privileged --cap-add=SYS_PRTACE pwndocker
+docker run -d \
+        --rm \
+	      -it \
+	      -h ${ctf_name} \
+	      --name ${ctf_name} \
+	      -v $(pwd):/ctf/envs:ro \
+	      -e "TZ=Asia/Shanghai" \
+	      -v $(pwd)/${ctf_name}:/ctf/work \
+	      -p 23946:23946 \
+	      --cap-add=SYS_TIME \
+	      --cap-add=SYS_PTRACE \
+	      r4b3rt/pwndocker
+docker exec -it ${ctf_name} zsh
 ```
 
 ### included software
