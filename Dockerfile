@@ -70,7 +70,7 @@ RUN ulimit -c 0
 RUN gem install one_gadget
 RUN gem install seccomp-tools
 
-RUN wget https://bootstrap.pypa.io/get-pip.py && \
+RUN wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py && \
     python3 get-pip.py && \
     python get-pip.py && \
     rm get-pip.py
