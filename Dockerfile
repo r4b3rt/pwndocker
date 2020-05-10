@@ -81,12 +81,11 @@ RUN python -m pip install pip==19.0.3 && \
 RUN pip install --upgrade setuptools && \
     pip install --no-cache-dir \
     ropgadget \
-    pwntools \
+    pwntools==3.13.0 \
     zio \
     smmap2 \
     z3-solver \
-    apscheduler && \
-    pip install --upgrade pwntools
+    apscheduler
 
 
 # Oh-my-zsh
