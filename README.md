@@ -12,7 +12,7 @@ cd Pwndocker
 easy will for your.
 docker build -t pwndocker .
 docker run -d \
-	--privileged
+	--privileged \
         --rm \
 	-it \
 	-h ${ctf_name} \
