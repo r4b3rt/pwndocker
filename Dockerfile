@@ -21,6 +21,7 @@ RUN dpkg --add-architecture i386 && \
     libffi-dev \
     libssl-dev \
     python-dev \
+    python3-dev \
     build-essential \
     tmux \
     glibc-source \
@@ -70,10 +71,8 @@ RUN ulimit -c 0
 RUN gem install one_gadget
 RUN gem install seccomp-tools
 
-RUN wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py && \
-    python3 get-pip.py && \
-    python get-pip.py && \
-    rm get-pip.py
+RUN python -m pip install pip==19.0.3 && \
+    python3 -m pip install pip==19.0.3
 
 RUN python3 -m pip install -U pip && \
     python3 -m pip install --no-cache-dir \
