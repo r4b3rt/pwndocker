@@ -72,9 +72,7 @@ RUN gem install one_gadget
 RUN gem install seccomp-tools
 
 RUN python -m pip install pip==19.0.3 && \
-    python3 -m pip install pip==19.0.3
-
-RUN python3 -m pip install -U pip && \
+    python3 -m pip install pip==19.0.3 && \
     python3 -m pip install --no-cache-dir \
     ropper \
     unicorn \
