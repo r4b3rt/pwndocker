@@ -75,11 +75,8 @@ RUN gem install seccomp-tools
 RUN python3 -m pip install --no-cache-dir \
     ropgadget \
     pwntools \
-    zio \
-    smmap2 \
     z3-solver \
-    apscheduler \
-    opper \
+    ropper \
     unicorn \
     keystone-engine \
     capstone \
