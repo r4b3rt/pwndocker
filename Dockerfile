@@ -22,7 +22,7 @@ RUN dpkg --add-architecture i386 && \
     libssl-dev \
     python-dev \
     python3-dev \
-    python3-pip
+    python3-pip \
     build-essential \
     tmux \
     glibc-source \
