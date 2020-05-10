@@ -73,7 +73,7 @@ RUN gem install one_gadget
 RUN gem install seccomp-tools
 
 RUN python3 -m pip install --no-cache-dir \
-    ropuadget \
+    ropgadget \
     pwntools \
     zio \
     smmap2 \
