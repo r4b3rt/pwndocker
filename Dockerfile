@@ -1,4 +1,4 @@
-FROM phusion/baseimage:last
+FROM phusion/baseimage:master-amd64
 MAINTAINER r4b3rt<r4b3rt#163.com>
 
 RUN dpkg --add-architecture i386 && \
@@ -17,9 +17,12 @@ RUN dpkg --add-architecture i386 && \
     vim \
     net-tools \
     curl \
+    iputils-ping \
     libffi-dev \
     libssl-dev \
     python-dev \
+    python3-dev \
+    python3-pip
     build-essential \
     tmux \
     glibc-source \
