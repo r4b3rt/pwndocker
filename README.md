@@ -12,17 +12,18 @@ cd Pwndocker
 easy will for your.
 docker build -t pwndocker .
 docker run -d \
+	--privileged
         --rm \
-	      -it \
-	      -h ${ctf_name} \
-	      --name ${ctf_name} \
-	      -v $(pwd):/ctf/envs:ro \
-	      -e "TZ=Asia/Shanghai" \
-	      -v $(pwd)/${ctf_name}:/ctf/work \
-	      -p 23946:23946 \
-	      --cap-add=SYS_TIME \
-	      --cap-add=SYS_PTRACE \
-	      r4b3rt/pwndocker
+	-it \
+	-h ${ctf_name} \
+	--name ${ctf_name} \
+	-v $(pwd):/ctf/envs:ro \
+	-e "TZ=Asia/Shanghai" \
+	-v $(pwd)/${ctf_name}:/ctf/work \
+	-p 23946:23946 \
+	--cap-add=SYS_TIME \
+	--cap-add=SYS_PTRACE \
+	r4b3rt/pwndocker
 docker exec -it ${ctf_name} zsh
 ```
 
