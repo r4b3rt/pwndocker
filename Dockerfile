@@ -21,8 +21,6 @@ RUN dpkg --add-architecture i386 && \
     libffi-dev \
     libssl-dev \
     python-dev \
-    python3-dev \
-    python3-pip \
     build-essential \
     tmux \
     glibc-source \
@@ -44,7 +42,6 @@ RUN dpkg --add-architecture i386 && \
     file \
     zsh \
     qemu \
-    python3-distutils \
     bison --fix-missing  \
     gcc-multilib \
     binwalk \
@@ -73,6 +70,11 @@ RUN ulimit -c 0
 RUN gem install one_gadget
 RUN gem install seccomp-tools
 
+RUN wget https://bootstrap.pypa.io/get-pip.py && \
+    python3 get-pip.py && \
+    python get-pip.py && \
+    rm get-pip.py
+
 RUN python3 -m pip install -U pip && \
     python3 -m pip install --no-cache-dir \
     ropper \
@@ -94,21 +96,21 @@ RUN pip install --upgrade setuptools && \
 RUN chsh -s /bin/zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-RUN git clone https://github.com/scwuaptx/Pwngdb.git /root/Pwngdb && \
+RUN git clone --depth 1 https://github.com/scwuaptx/Pwngdb.git /root/Pwngdb && \
     cd /root/Pwngdb && cat /root/Pwngdb/.gdbinit  >> /root/.gdbinit && \
     sed -i "s?source ~/peda/peda.py?# source ~/peda/peda.py?g" /root/.gdbinit
 
-RUN git clone https://github.com/r4b3rt/peda.git ~/peda && \
+RUN git clone --depth 1 https://github.com/r4b3rt/peda.git ~/peda && \
     cp ~/peda/.inputrc ~/
 
-RUN git clone https://github.com/niklasb/libc-database.git libc-database && \
+RUN git clone --depth 1 https://github.com/niklasb/libc-database.git libc-database && \
     cd libc-database && ./get || echo "/libc-database/" > ~/.libcdb_path
 
-RUN git clone https://github.com/pwndbg/pwndbg && \
+RUN git clone --depth 1 https://github.com/pwndbg/pwndbg && \
     cd pwndbg &&  ./setup.sh
 
 # Vim-config
-RUN git clone https://github.com/r4b3rt/vimrc && \
+RUN git clone --depth 1 https://github.com/r4b3rt/vimrc && \
     cd vimrc && chmod u+x install.sh && ./install.sh && cd ..
 
 WORKDIR /ctf/work/
